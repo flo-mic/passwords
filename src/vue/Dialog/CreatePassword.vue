@@ -27,9 +27,9 @@
                                    readonly/>
                         </div>
                         <div class="settings" :class="{active: generator.active}">
-                            <input id="password-password-numbers" type="checkbox" v-model="generator.numbers"/>
+                            <input id="password-password-numbers" type="checkbox" v-model="generator.numbers" :disabled="!generator.active"/>
                             <translate tag="label" for="password-password-numbers" say="Numbers"/>
-                            <input id="password-password-special" type="checkbox" v-model="generator.special"/>
+                            <input id="password-password-special" type="checkbox" v-model="generator.special" :disabled="!generator.active"/>
                             <translate tag="label" for="password-password-special" say="Special Characters"/>
                             <translate tag="label" for="password-password-strength" say="Strength"/>
                             <select id="password-password-strength" v-model="generator.strength">
@@ -211,6 +211,8 @@
 
         watch: {
             password(password) {
+                if(typeof password.customFields === "string") password.customFields = JSON.parse(password.customFields);
+                if(password.customFields === null) password.customFields = {};
                 if(this.simplemde) this.simplemde.value(password.notes);
             },
             'generator.numbers'(value, oldValue) {

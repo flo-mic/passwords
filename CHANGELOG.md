@@ -1,3 +1,15 @@
+#### 2018.10.0 - Feature release
+- Added Dutch translation
+- Added Russian translation
+- Improved background job logging
+- Fixed errors in admin settings with http
+
+#### 2018.9.1 - Bugfix Release
+- Fixed custom_fields initialization migration
+- Fixed api token reset in Nextcloud 14
+- Fixed #sharing with autocomplete disabled
+- Fixed layout issues in Nextcloud 14
+
 #### 2018.9.0 - Feature Release
 - Added Nextcloud 14 Support
 

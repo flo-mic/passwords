@@ -17,7 +17,7 @@
 
     export default {
         components: {Web},
-        props: {
+        props     : {
             image: {
                 type     : String,
                 'default': ''
@@ -139,11 +139,12 @@
             }
 
             .loader {
-                position : absolute;
-                top      : 0;
-                right    : 0;
-                bottom   : 0;
-                left     : 0;
+                position         : absolute;
+                top              : 0;
+                right            : 0;
+                bottom           : 0;
+                left             : 0;
+                background-color : var(--color-primary);
 
                 img {
                     transform  : translate(-50%, -50%);

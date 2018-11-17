@@ -1,3 +1,22 @@
+#### 2018.11.2 - Feature release
+- Fixed copy to clipboard
+- Fixed Environment Service in cli mode
+- Fixed invalid security status code
+- Fixed drag and drop scrolling
+- Fixed search link in footer
+
+#### 2018.11.1 - Feature release
+- Fixed copy to clipboard on iOS
+- Fixed deleting empty tokens
+- Fixed empty user name
+- Improved french translation
+
+#### 2018.11.0 - Feature release
+- Added server side backups
+- Added french translation
+- Added one time api tokens
+- Improved admin settings save feedback
+
 #### 2018.10.0 - Feature release
 - Added Dutch translation
 - Added Russian translation
@@ -7,7 +26,7 @@
 #### 2018.9.1 - Bugfix Release
 - Fixed custom_fields initialization migration
 - Fixed api token reset in Nextcloud 14
-- Fixed #sharing with autocomplete disabled
+- Fixed sharing with autocomplete disabled
 - Fixed layout issues in Nextcloud 14
 
 #### 2018.9.0 - Feature Release

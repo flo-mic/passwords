@@ -79,6 +79,8 @@ class AdminSettings implements ISettings {
             'previewServices'  => $this->getWebsitePreviewServices(),
             'securityServices' => $this->getSecurityServices(),
             'purgeTimeout'     => $this->getPurgeTimeout(),
+            'backupInterval'   => $this->getBackupInterval(),
+            'backupFiles'      => $this->config->getAppValue('backup/files/maximum', 14),
             'mailSecurity'     => $this->config->getAppValue('settings/mail/security', true),
             'mailSharing'      => $this->config->getAppValue('settings/mail/shares', false),
             'debugHTTPS'       => $this->config->getAppValue('debug/https', false),
@@ -292,6 +294,23 @@ class AdminSettings implements ISettings {
     /**
      * @return array
      */
+    protected function getBackupInterval(): array {
+        return [
+            'current' => $this->config->getAppValue('backup/interval', 86400),
+            'options' => [
+                3600    => 'Every hour',
+                21600   => 'Every six hours',
+                86400   => 'Every day',
+                172800  => 'Every two days',
+                604800  => 'Every week',
+                1209600 => 'Every two weeks'
+            ]
+        ];
+    }
+
+    /**
+     * @return array
+     */
     protected function getFileCaches(): array {
         $caches = $this->fileCacheService->listCaches();
 
@@ -319,10 +338,9 @@ class AdminSettings implements ISettings {
      */
     protected function getPlatformSupport(): array {
         $ncVersion = intval(explode('.', \OC::$server->getConfig()->getSystemValue('version'), 2)[0]);
-        $cronType = \OC::$server->getConfig()->getAppValue('core', 'backgroundjobs_mode', 'ajax');
+        $cronType  = \OC::$server->getConfig()->getAppValue('core', 'backgroundjobs_mode', 'ajax');
 
         if(BackgroundJob::getExecutionType() !== '') $cronType = BackgroundJob::getExecutionType();
-
 
         return [
             'cron'   => $cronType === 'ajax',
@@ -338,7 +356,7 @@ class AdminSettings implements ISettings {
                 'error'   => $ncVersion < 12,
                 'version' => $ncVersion
             ],
-            'eol'    => (date('Y') + 1).'.1.0'
+            'eol'    => '2019.1.0'
         ];
     }
 
